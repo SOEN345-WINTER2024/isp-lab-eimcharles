@@ -51,9 +51,11 @@ public class IteratorTest {
     	
     @Test(expected=NoSuchElementException.class)
     public void listNextElementNoSuchElementException(){
+	studentName.add("Charles");
+	studentName.add("Dan"); 
     	itr = studentName.iterator();
         itr.next(); 
-        itr.next(); 
+        itr.next();
         assertFalse(itr.next());
     }
     
@@ -78,12 +80,10 @@ public class IteratorTest {
   
     @Test (expected=ConcurrentModificationException.class)
     public void listHasNextElementConcurrentModification(){
-        itr = studentName.iterator();
-        
+        itr = studentName.iterator(); 
         itr.next();
     	studentName.add("Charles");
         itr.remove();
-
     }
 
 }
